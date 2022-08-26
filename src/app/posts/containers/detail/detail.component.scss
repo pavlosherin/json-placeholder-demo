@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+
+.comment:nth-child(2n) {
+  background: var(--bs-gray-200);
+}
+
+.button--float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+

@@ -9,6 +9,8 @@ import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '@/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Overlay } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +22,7 @@ import { environment } from '@/environments/environment';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
-  providers: [],
+  providers: [MatSnackBar, Overlay],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

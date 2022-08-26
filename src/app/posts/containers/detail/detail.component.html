@@ -1,0 +1,48 @@
+<ng-container *ngIf="(post$ | async) !== null; else noPost">
+  <app-newspaper-header [title]="(post$ | async)?.title"></app-newspaper-header>
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col">
+        {{(post$ | async)?.body}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-end my-4">
+        <ng-container *ngIf="(user$ | async); else userUnknown">
+          {{(user$ | async)?.username}} [{{(user$ | async)?.email}}]
+        </ng-container>
+      </div>
+    </div>
+    <ng-container *ngIf="(comments$ | async); else wait">
+      <div class="row">
+        <div class="col">
+          <h2>Comments</h2>
+        </div>
+      </div>
+      <div *ngFor="let comment of (comments$ | async)" class="row comment">
+        <div class="col my-2">
+          <div>{{comment.body}}</div>
+          <div class="text-end">[{{comment.email}}]</div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="row mb-4">
+    <div class="col d-flex justify-content-end">
+      <app-button-link (click)="goBack()" class="me-2"><mat-icon>arrow_back</mat-icon> return</app-button-link>
+      <app-button-link (click)="scrollToTop()"><mat-icon>arrow_upward</mat-icon> scroll top</app-button-link>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #wait>
+  <app-spinner></app-spinner>
+</ng-template>
+
+<ng-template #noPost>
+  <div>No post</div>
+</ng-template>
+
+<ng-template #userUnknown>
+  <div>author unknown</div>
+</ng-template>

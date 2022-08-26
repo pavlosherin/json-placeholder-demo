@@ -1,18 +1,26 @@
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { postsNamedRoutes } from '@App/posts/posts.routes';
 
 export const namedRoutes = {
-  main: { home: '' },
-  posts: { main: 'posts' }
+  app: { base: '' },
+  ...postsNamedRoutes
 };
 
 export const routes: Routes = [
   {
-    path: namedRoutes.main.home,
-    component: AppComponent
-  },
-  {
-    path: namedRoutes.posts.main,
-    loadChildren: () => import('./posts/posts.module').then((m) => m.PostsModule)
+    path: namedRoutes.app.base,
+    component: AppComponent,
+    children: [
+      {
+        path: namedRoutes.appPosts,
+        loadChildren: () => import('./posts/posts.module').then((m) => m.PostsModule)
+      },
+      {
+        path: '**',
+        pathMatch: 'full',
+        redirectTo: namedRoutes.appPosts
+      }
+    ]
   }
 ];

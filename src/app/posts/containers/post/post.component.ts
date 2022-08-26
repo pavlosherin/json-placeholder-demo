@@ -9,11 +9,11 @@ import { IPost } from '../../models/post.model';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  public posts$: Observable<IPost[]>;
+  public posts$: Observable<IPost[] | undefined | null>;
 
-  constructor(private postsFacade: PostsFacade) {
-    this.postsFacade.loadPosts();
-    this.posts$ = this.postsFacade.getPosts$();
+  constructor(private readonly _postsFacade: PostsFacade) {
+    this._postsFacade.loadPosts();
+    this.posts$ = this._postsFacade.posts$;
   }
 
   ngOnInit(): void {}
