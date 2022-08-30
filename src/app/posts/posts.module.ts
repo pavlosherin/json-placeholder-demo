@@ -17,6 +17,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ButtonLinkComponent } from '@App/posts/components/buttons/button-link.component';
 import { SpinnerComponent } from '@App/posts/components/spinner/spinner.component';
 import { UsersModule } from '@App/users/users.module';
+import { PostEditComponent } from './containers/post-edit/post-edit.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,8 @@ import { UsersModule } from '@App/users/users.module';
     DetailComponent,
     NewspaperHeaderComponent,
     ButtonLinkComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PostEditComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +45,11 @@ import { UsersModule } from '@App/users/users.module';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    UsersModule
+    UsersModule,
+    MatInputModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [PostsFacade]
 })

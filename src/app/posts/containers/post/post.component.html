@@ -3,17 +3,30 @@
     <app-newspaper-header title="Today's posts"></app-newspaper-header>
   </div>
 </div>
-<div class="row">
-  <ng-container *ngIf="(posts$ | async); else wait">
+<ng-container [ngTemplateOutlet]="toolbar"></ng-container>
+
+<ng-container *ngIf="(posts$ | async); else wait">
+  <div class="row">
     <div *ngFor="let post of (posts$ | async)" class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
       <app-card
         [content]="post.body"
         [id]="post.id"
         [title]="post.title"
+        [user]="(getUserById$(post.userId) | async)"
       ></app-card>
     </div>
-  </ng-container>
-</div>
+  </div>
+  <ng-container [ngTemplateOutlet]="toolbar"></ng-container>
+</ng-container>
+
+<ng-template #toolbar>
+  <div class="row mb-4">
+    <div class="col d-flex justify-content-end">
+      <app-button-link (click)="resetPosts()" class="me-2" color="warn"><mat-icon>loop</mat-icon> reset posts</app-button-link>
+      <app-button-link (click)="createPost()" class="me-2"><mat-icon>add</mat-icon> new post</app-button-link>
+    </div>
+  </div>
+</ng-template>
 
 <ng-template #wait>
   <app-spinner></app-spinner>

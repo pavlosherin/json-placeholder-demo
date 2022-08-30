@@ -2,26 +2,33 @@ import { createAction, createFeature, createReducer, on, props } from '@ngrx/sto
 import { IUser } from '@App/users/models/user.model';
 
 export interface IUserState {
-  selectedUser: IUser | null;
+  users: IUser[] | undefined | null;
+  selectedUser: IUser | undefined | null;
 }
 
 export const initialState: IUserState = {
+  users: undefined,
   selectedUser: null
 };
 
 export const selectAction = createAction(
-  `[USERS select user]`,
+  `[USERS] select active user`,
   props<{ selectedUser: IUser | null }>()
 );
-export const deselectAction = createAction(`[USERS deselect user]`);
+export const loadAction = createAction(
+  `[USERS] load users from server`,
+  props<{ users: IUser[] | null }>()
+);
+export const deactivateUserAction = createAction(`[USERS] deselect user`);
 
 export const usersFeature = createFeature({
   name: 'Users',
   reducer: createReducer(
     initialState,
     on(selectAction, (state, { selectedUser }) => ({ ...state, selectedUser })),
-    on(deselectAction, (state) => ({ ...state, selectedUser: null }))
+    on(loadAction, (state, { users }) => ({ ...state, users })),
+    on(deactivateUserAction, (state) => ({ ...state, selectedUser: null }))
   )
 });
 
-export const { name, reducer, selectSelectedUser } = usersFeature;
+export const { name, reducer, selectUsers, selectSelectedUser: selectActiveUser } = usersFeature;

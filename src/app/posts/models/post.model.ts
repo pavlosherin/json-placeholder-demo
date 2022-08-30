@@ -4,3 +4,9 @@ export interface IPost {
   title: string;
   body: string;
 }
+
+export interface IPostCreate {
+  userId: number;
+  title: string;
+  body: string;
+}

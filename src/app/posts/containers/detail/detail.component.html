@@ -13,6 +13,12 @@
         </ng-container>
       </div>
     </div>
+    <div class="row">
+      <div class="col d-flex justify-content-end">
+        <app-button-link (click)="editPost()" class="me-2"><mat-icon>edit</mat-icon> Edit</app-button-link>
+        <app-button-link (click)="deletePost()" color="warn"><mat-icon>delete</mat-icon> Delete</app-button-link>
+      </div>
+    </div>
     <ng-container *ngIf="(comments$ | async); else wait">
       <div class="row">
         <div class="col">
