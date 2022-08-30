@@ -3,8 +3,8 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-button-link',
   template: `<button
-    [routerLink]="link"
     mat-flat-button
+    [routerLink]="link"
     [color]="color"
     [disabled]="disabled"
     [type]="type">

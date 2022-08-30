@@ -10,6 +10,12 @@ import { NewspaperHeaderComponent } from '@App/posts/components/newspaper-header
 import { SpinnerComponent } from '@App/posts/components/spinner/spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Overlay } from '@angular/cdk/overlay';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UsersFacade } from '@App/users/users.facade';
+import { MatIconModule } from '@angular/material/icon';
+import { ButtonLinkComponent } from '@App/posts/components/buttons/button-link.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('PostComponent', () => {
   let component: PostComponent;
@@ -17,9 +23,27 @@ describe('PostComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PostComponent, NewspaperHeaderComponent, SpinnerComponent],
-      imports: [HttpClientModule, MatProgressSpinnerModule],
-      providers: [PostsFacade, provideMockStore({ initialState }), MatSnackBar, Overlay]
+      declarations: [
+        PostComponent,
+        NewspaperHeaderComponent,
+        SpinnerComponent,
+        ButtonLinkComponent
+      ],
+      imports: [
+        HttpClientModule,
+        MatProgressSpinnerModule,
+        MatDialogModule,
+        MatIconModule,
+        RouterTestingModule,
+        MatButtonModule
+      ],
+      providers: [
+        PostsFacade,
+        UsersFacade,
+        provideMockStore({ initialState }),
+        MatSnackBar,
+        Overlay
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PostComponent);

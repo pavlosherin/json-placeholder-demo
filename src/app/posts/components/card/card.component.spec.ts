@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { ButtonLinkComponent } from '@App/posts/components/buttons/button-link.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -12,7 +13,7 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatCardModule, MatIconModule, RouterTestingModule],
+      imports: [MatCardModule, MatIconModule, RouterTestingModule, MatButtonModule],
       declarations: [CardComponent, ButtonLinkComponent]
     }).compileComponents();
 
