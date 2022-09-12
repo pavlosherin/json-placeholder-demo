@@ -35,6 +35,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - Better way to handle types in state.functions.ts:updateArrayProperties
 - Improve UX with additional confirmation dialogs
-- Write end-to-end tests
+- Extend end-to-end tests
 - Extend unit tests
 - ...
