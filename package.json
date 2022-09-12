@@ -6,9 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
     "lint": "ng lint",
+    "test": "ng test",
+    "test:headless": "ng test --browsers ChromeHeadless --watch=false",
     "e2e": "ng e2e",
+    "e2e:run": "ng run angular-demo:e2e-run",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },

@@ -2,8 +2,14 @@ describe('Homepage', () => {
   let newPost: { title: string; post: string; user: string };
 
   it('Initial page', () => {
+    cy.intercept('GET', '**/posts', (req) => {
+      req.continue((res) => {
+        res.setDelay(2000);
+      });
+    }).as('GetPosts');
     cy.visit('/');
     cy.get('mat-spinner').should('exist');
+    cy.wait('@GetPosts');
     cy.contains("Today's posts");
     cy.get('app-button-link').contains('reset posts').should('have.class', 'mat-warn');
     cy.contains(
@@ -11,7 +17,7 @@ describe('Homepage', () => {
     );
     cy.wait(300);
     cy.get('snack-bar-container button.mat-button').contains('OK').click();
-    cy.wait(1000);
+    cy.wait(300);
     cy.contains(
       'Server data are not persistent, any change is keeping only in client state and will be lost after refresh page'
     ).should('not.exist');

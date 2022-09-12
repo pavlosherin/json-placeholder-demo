@@ -155,6 +155,19 @@
             }
           }
         },
+        "e2e-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "angular-demo:serve",
+            "watch": false,
+            "headless": true
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-demo:serve:production"
+            }
+          }
+        },
         "e2e": {
           "builder": "@cypress/schematic:cypress",
           "options": {
