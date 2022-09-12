@@ -17,6 +17,12 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+## Running e2e tests
+
+Run `npm run e2e` to execute the end-to-end testing via [Cypress](https://docs.cypress.io/guides/overview/why-cypress).
+
+Also `npm run cypress:run` to run end-to-end tests in chrome-headless mode. Can be run for continuous integration.
+
 ## Running eslint code analyzer
 
 Run `npm run lint` to execute the eslint analyzer via [Eslint](https://github.com/eslint/eslint).
